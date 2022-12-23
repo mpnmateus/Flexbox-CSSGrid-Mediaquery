@@ -11,4 +11,29 @@ body, ul, li, p{
 
 a {
     text-decoration: none; /*tirando o sublinhado*/
+    color: white;
+}
+
+.header {
+    background-color: black;
+    display: flex; /*um flexitem de um lado e outro de outro*/
+    flex-wrap: wrap; /*Quando a tela ficar bem pequena, a parte da direita do flexbox vai para baixo do logo (quebra de linha)*/
+    justify-content: space-between; /*espaço entre eles*/
+    align-items: center; /*Alinhando os flex-itens a*/
+    padding: 20px;
+}
+
+.menu {
+    /*Esse menu será outro flex item (ficará um ao lado do outro)*/
+    display: flex;
+}
+
+.menu li {
+    margin-left: 10px; /*não dou mais pois vou declarar um padding para o a do li - isso ajuda a aumentar a área de clique também, facilitando inclusive no mobile*/
+
+}
+
+.menu li a {
+    display: block; 
+    padding: 10px;
 }
