@@ -49,3 +49,7 @@ img{
 }
 
 /*CSS FLEXBOX 1*/
+
+.flex{
+    display: flex; /*Os itens um do lado do outro*/
+}
