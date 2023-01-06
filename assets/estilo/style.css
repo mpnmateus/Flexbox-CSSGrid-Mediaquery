@@ -100,3 +100,12 @@ img{
 }
 
 /* CSS GRID LAYOUT 1*/
+
+.grid1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;/*Quantas colunas eu quero que essa grid tenha. fr: unidade fracional. aqui, é como se estivéssemos dividindo 100% em 3 partes (33,33% +-)*/
+    /*grid-template-columns: repeat(3, 1fr); shorthand com função: Repetir três vezes o 1fr*/
+    max-width: 780px; /*Segurar o container / resolvendo o problema de alinhamento: no gridlayout, o container tem seus itens vazando 10 pixels, pq o grid gap foi configurado em 20 px (10px pra casa lado); assim, diminuir a largura do container do grid layout num total de 20px (estava em 800px)*/
+    margin: 0 auto; /*Colocando no centro*/
+    grid-gap: 20px; /*espaçamento entre os itens. Não preciso ficar colocando margem entre os itens*/
+}
