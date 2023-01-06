@@ -9,6 +9,10 @@ body, ul, li, p{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body{
+    margin-bottom: 100px;
+}
+
 a {
     text-decoration: none; /*tirando o sublinhado*/
     color: white;
@@ -105,7 +109,41 @@ img{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;/*Quantas colunas eu quero que essa grid tenha. fr: unidade fracional. aqui, é como se estivéssemos dividindo 100% em 3 partes (33,33% +-)*/
     /*grid-template-columns: repeat(3, 1fr); shorthand com função: Repetir três vezes o 1fr*/
-    max-width: 780px; /*Segurar o container / resolvendo o problema de alinhamento: no gridlayout, o container tem seus itens vazando 10 pixels, pq o grid gap foi configurado em 20 px (10px pra casa lado); assim, diminuir a largura do container do grid layout num total de 20px (estava em 800px)*/
+    max-width: 800px; /*Segurar o container / resolvendo o problema de alinhamento: no gridlayout, o container tem seus itens vazando 10 pixels, pq o grid gap foi configurado em 20 px (10px pra casa lado); assim, diminuir a largura do container do grid layout num total de 20px (estava em 800px) OU MELHOR: manter 800px de largura max e colocar um padding de 10px, esse gapzinho não deixará os itens ficarem grudados no limite da tela*/
+    padding: 10px;
     margin: 0 auto; /*Colocando no centro*/
     grid-gap: 20px; /*espaçamento entre os itens. Não preciso ficar colocando margem entre os itens*/
+}
+
+/*As três primeiras figuras serão mais alargadas (maiores, num geral). Posso estilizar por classes (para as figuras maiores e para as menores) ou posso utilizar diretamente o seletor de CSS (que pe o que será feito): */
+
+.grid1 > div:nth-child(n + 4) { /*quero falar com as divs que estão dentro da classe .grid1 e, mais profundamente, falar com o filho daquela grid (posso escolher qual filho). se eu usar, dentro da função, um número, falo com o filho na ordem escolhida. se eu optar pelo valor n + 4, farei com que a partir do 4 item terei as propriedades e valores aplicados aos itens */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    align-items: center; /*Texto alinhado, ao centro, com a imagem*/
+}
+
+.grid1 > div.anuncio { /*o recurso do grid layout facilita o processo de posicionar o anuncio, posso dizer exatamente onde quero posicionar esse item do anuncio*/
+    grid-column: 1; /*estará posicionado sempre na primeira coluna*/
+    grid-row: 2 / 5; /*Para ocupar da linha 2 até a linha 5*/
+    display: block; /*preciso deixar o seletor mais específico para surtir efeito (antes: .anuncio, apenas)*/
+    border-top: 10px solid lightcoral;
+}
+
+@media (max-width: 600px) { /*Tudo que for abaixo de 600px de largura, aplica esse estilo: */
+    .grid1 {
+        grid-template-columns: repeat(2, 1fr); /*Ao invés de três colunas, quero, agora, duas*/
+    }
+
+    .grid1 > div:nth-child(n + 4) { /*Para mobile, faz mais sentido voltar ao estilo normal. assim, se eu modificar o estilo dele para block, as propriedades desse seletor, nesse media query, serão anuladas, pq o block faz isso*/
+        display: block;
+    }
+
+    .grid1 > div.anuncio{ /*Não quero mais que o anúncio ocupe três linhas*/
+        grid-column: auto;
+        grid-row: auto;
+        order: -1; /*modificando a ordem para fazer com que o anúncio apareça como primeira imagem nessa media query. A ordem no DOM não é modificada, apenas na parte visual*/
+    }
+
 }
