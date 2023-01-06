@@ -53,8 +53,11 @@ img{
 .flex{
     display: flex; /*Os itens um do lado do outro*/
     flex-wrap: wrap; /*tem o tam mín de 200px e vai quebrando ajustando-se à tela*/
+    max-width: 800px; /*Segurar o container: ao invés de deixá-lo livre. O ideal é que seja a mesma largura que irei utilizar nos outro itens do site*/
+    margin: 0 auto; /*Alinhar ao centro quando passar dos 800px*/
 }
 
 .flex > div { /*A div que está dentro do flex, que é o flex item*/
     flex: 1 1 200px; /*tamanho mínimo: 200px. sempre terá que ter essa base e, se não conseguir, vai quebrar*/
+    margin: 10px; /*margem entre os flexitens*/
 }
