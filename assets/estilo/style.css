@@ -147,3 +147,37 @@ img{
     }
 
 }
+
+/* CSS GRID 2 */ 
+
+/*Estilo para tornar semelhante ao youtube. poderia usar o flexbox, mas o css grid layout funcionará melhor nesse caso*/
+
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr 200px; /*A imagem maior expande e diminui, mas o side bar se manterá com 200px*/
+    grid-gap: 20px;
+    max-width: 800px;
+    padding: 10px;
+    margin: 0 auto; /*Para se manter ao centro*/
+}
+
+.sidebar > div {
+    margin-bottom: 10px; /*Para separar melhor os itens do sidebar*/
+}
+
+@media (max-width: 600px) {
+    .grid2 {
+        grid-template-columns: 1fr; /*Em larguras menores, os itens se alinharão em uma coluna, apenas*/
+    }
+    /*Mas, ainda, o item maior (que serve pro video e/ou anuncio) tem o mesmo tamanho que os itens do sidebar (videos recomendados). Temos que resolver: */
+    .sidebar {
+        display: flex; /*Nessa media query, os videos recomendados vicarão abaixo do video principal ao lado um do outro*/
+        overflow: scroll; /*Gera uma barra de rolagem lateral*/
+    }
+
+    .sidebar > div {
+        flex: 1 0 200px; /*Ao usar o valor 0 na segunda casa da propriedade, faz com que os itens nao diminuam. terá 100px de base*/
+        margin: 0 10px;
+    }
+
+}
